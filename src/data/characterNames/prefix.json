@@ -1,0 +1,8 @@
+[
+	{ "text": "Mister", 				"gender": "male"},
+	{ "text": "Missus", 				"gender": "female"},
+	{ "text": "King", 					"gender": "male"},
+	{ "text": "Queen",	 				"gender": "male"},
+	{ "text": "Doctor", 				"gender": "both"},
+	{ "text": "",						"gender": "both"}
+]

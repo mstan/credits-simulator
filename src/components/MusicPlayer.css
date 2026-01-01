@@ -1,0 +1,29 @@
+.music-player-zone {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.music-player-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: auto;
+}
+
+.music-player-zone:hover .music-player-button {
+  opacity: 1;
+}

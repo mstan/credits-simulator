@@ -1,0 +1,233 @@
+.scrolling-container {
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.scrolling-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-credits {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 2rem;
+  position: absolute;
+  top: 100vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.initial-spacer {
+  height: 0;
+}
+
+.credit-section {
+  margin-bottom: 5rem;
+  width: 100%;
+}
+
+/* Single column layout */
+.single-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
+}
+
+.credit-entry {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  margin-bottom: 8rem;
+  padding-bottom: 4rem;
+}
+
+/* Character credit styling (single column) */
+.character-credit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.character-role {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  color: #ffffff;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  line-height: 1.3;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.character-actor {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 300;
+  color: #cccccc;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: 'Georgia', serif;
+  line-height: 1.5;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Position credit styling (single column) */
+.position-credit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.credit-role {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  color: #ffffff;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  line-height: 1.3;
+}
+
+.credit-name {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 300;
+  color: #cccccc;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  line-height: 1.5;
+}
+
+/* Multi-column layout */
+.multi-column {
+  width: 100%;
+}
+
+.multi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 4rem;
+  width: 100%;
+}
+
+.credit-entry-compact {
+  text-align: center;
+}
+
+/* Character credit styling (multi-column) */
+.character-credit-compact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.character-role-compact {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 400;
+  color: #ffffff;
+  font-family: 'Georgia', serif;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  line-height: 1.3;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.character-actor-compact {
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  font-weight: 300;
+  color: #aaaaaa;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+  font-family: 'Georgia', serif;
+  line-height: 1.4;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Position credit styling (multi-column) */
+.position-credit-compact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.credit-role-compact {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 400;
+  color: #ffffff;
+  font-family: 'Georgia', serif;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  line-height: 1.3;
+}
+
+.credit-name-compact {
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  font-weight: 300;
+  color: #aaaaaa;
+  font-family: 'Georgia', serif;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scrolling-credits {
+    padding: 0 1.5rem;
+    max-width: 100%;
+  }
+
+  .credit-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .single-column {
+    gap: 3rem;
+  }
+
+  .multi-grid {
+    gap: 2.5rem 3rem;
+  }
+
+  .credit-role {
+    letter-spacing: 1.5px;
+  }
+
+  .credit-role-compact {
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrolling-credits {
+    padding: 0 1rem;
+  }
+
+  .credit-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .single-column {
+    gap: 2.5rem;
+  }
+
+  .multi-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .credit-role {
+    letter-spacing: 1px;
+  }
+}

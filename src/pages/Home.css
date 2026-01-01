@@ -1,0 +1,130 @@
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 2rem;
+}
+
+.home-content {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.home-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+  font-family: 'Georgia', serif;
+}
+
+.home-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  font-family: Arial, sans-serif;
+}
+
+.style-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.style-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 2.5rem 2rem;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.style-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.style-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.style-card h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
+}
+
+.style-card p {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.info-box {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-box p {
+  margin: 0.5rem 0;
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: Arial, sans-serif;
+}
+
+.info-box code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .style-options {
+    gap: 1.5rem;
+  }
+
+  .style-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .info-box {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .style-options {
+    grid-template-columns: 1fr;
+  }
+}

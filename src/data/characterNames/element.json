@@ -1,0 +1,9 @@
+[		
+	{ "text": "Fire", 				"gender": "both"},
+	{ "text": "Water",				"gender": "both"},
+	{ "text": "Earth", 				"gender": "both"},
+	{ "text": "Wind",				"gender": "both"},
+	{ "text": "Lightning", 			"gender": "both"},
+	{ "text": "Darkness", 			"gender": "both"},
+	{ "text": "Dark Arts",			"gender": "both"}
+]
