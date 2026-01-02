@@ -3,7 +3,8 @@ import './MusicPlayer.css';
 
 const MusicPlayer = () => {
   const audioRef = useRef(null);
-  const [playlist, setPlaylist] = useState([]);
+  const [availableSongs, setAvailableSongs] = useState([]); // Full list from manifest
+  const [loadedSongs, setLoadedSongs] = useState([]); // Songs loaded in memory (max 2)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -28,8 +29,12 @@ const MusicPlayer = () => {
           const songsWithBase = songs.map(song => `${baseUrl}${song}`);
           // Shuffle the playlist
           const shuffled = [...songsWithBase].sort(() => Math.random() - 0.5);
-          setPlaylist(shuffled);
-          console.log(`Found ${songs.length} music file(s):`, shuffled);
+          setAvailableSongs(shuffled);
+
+          // Load only first 2 songs initially
+          const initialSongs = shuffled.slice(0, 2);
+          setLoadedSongs(initialSongs);
+          console.log(`Loaded ${initialSongs.length} of ${songs.length} songs initially`);
         } else {
           console.log('No music files in manifest');
         }
@@ -41,11 +46,14 @@ const MusicPlayer = () => {
   }, []);
 
   useEffect(() => {
-    if (playlist.length > 0 && audioRef.current) {
-      audioRef.current.src = playlist[currentIndex];
+    if (loadedSongs.length > 0 && audioRef.current) {
+      audioRef.current.src = loadedSongs[currentIndex];
 
       // Set volume to 50%
       audioRef.current.volume = 0.5;
+
+      // Set preload to metadata only (don't preload entire file)
+      audioRef.current.preload = 'metadata';
 
       // Auto-play attempt (may be blocked by browser policies)
       audioRef.current.play().catch(err => {
@@ -55,11 +63,29 @@ const MusicPlayer = () => {
 
       setIsPlaying(true);
     }
-  }, [currentIndex, playlist]);
+  }, [currentIndex, loadedSongs]);
 
   const handleEnded = () => {
-    // Move to next song in playlist
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % playlist.length);
+    // Move to next song in loaded queue
+    const nextIndex = currentIndex + 1;
+
+    if (nextIndex < loadedSongs.length) {
+      // Play next song that's already loaded
+      setCurrentIndex(nextIndex);
+    } else {
+      // Load next song from available pool
+      const nextSongIndex = loadedSongs.length % availableSongs.length;
+      const nextSong = availableSongs[nextSongIndex];
+
+      // Replace oldest song with new one (keep queue at 2 songs)
+      setLoadedSongs(prev => {
+        const newQueue = [...prev.slice(1), nextSong]; // Remove first, add new at end
+        return newQueue;
+      });
+
+      setCurrentIndex(0); // Reset to play the newly loaded song
+      console.log('Loaded next song:', nextSong);
+    }
   };
 
   const togglePlay = () => {
@@ -74,7 +100,7 @@ const MusicPlayer = () => {
     }
   };
 
-  if (playlist.length === 0) {
+  if (loadedSongs.length === 0) {
     return null; // No music to play
   }
 

@@ -17,7 +17,7 @@ if (existsSync(musicSrcDir)) {
   // Create dist/music directory
   mkdirSync(musicDestDir, { recursive: true });
 
-  // Copy all MP3 files
+  // Copy only MP3 files (WAV files are too large for web deployment)
   const files = readdirSync(musicSrcDir);
   const mp3Files = files.filter(file => file.toLowerCase().endsWith('.mp3'));
 
@@ -25,7 +25,8 @@ if (existsSync(musicSrcDir)) {
     const src = join(musicSrcDir, file);
     const dest = join(musicDestDir, file);
     copyFileSync(src, dest);
-    console.log(`Copied: ${file}`);
+    const fileSizeKB = (existsSync(src) ? require('fs').statSync(src).size / 1024 : 0).toFixed(0);
+    console.log(`Copied: ${file} (${fileSizeKB} KB)`);
   });
 
   // Generate music.json manifest with relative paths
@@ -33,7 +34,7 @@ if (existsSync(musicSrcDir)) {
   const manifestPath = join(__dirname, 'dist', 'music.json');
   writeFileSync(manifestPath, JSON.stringify(musicPaths, null, 2));
   console.log(`\n✓ Generated music.json manifest`);
-  console.log(`✓ Copied ${mp3Files.length} music file(s) to dist/music/`);
+  console.log(`✓ Copied ${mp3Files.length} MP3 file(s) to dist/music/`);
 } else {
   console.log('No music directory found - deploying without music');
 }
