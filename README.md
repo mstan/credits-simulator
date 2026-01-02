@@ -96,3 +96,23 @@ npm run build
 ```
 
 The built files will be in the `dist/` directory.
+
+## Deployment to GitHub Pages
+
+1. Create a GitHub repository named `credits-simulator-webpage`
+
+2. Push your code:
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/credits-simulator-webpage.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+3. Deploy:
+   ```bash
+   npm run deploy
+   ```
+
+Your site will be live at: `https://YOUR_USERNAME.github.io/credits-simulator-webpage/`
+
+**Note:** Music files are ignored by git (added to `.gitignore`), so they won't be deployed. The music player will simply not show any controls if no music files are detected.
