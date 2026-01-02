@@ -1,4 +1,4 @@
-import { copyFileSync, mkdirSync, readdirSync, existsSync, writeFileSync } from 'fs';
+import { copyFileSync, mkdirSync, readdirSync, existsSync, writeFileSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,7 +25,7 @@ if (existsSync(musicSrcDir)) {
     const src = join(musicSrcDir, file);
     const dest = join(musicDestDir, file);
     copyFileSync(src, dest);
-    const fileSizeKB = (existsSync(src) ? require('fs').statSync(src).size / 1024 : 0).toFixed(0);
+    const fileSizeKB = (existsSync(src) ? statSync(src).size / 1024 : 0).toFixed(0);
     console.log(`Copied: ${file} (${fileSizeKB} KB)`);
   });
 

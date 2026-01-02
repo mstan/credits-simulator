@@ -105,7 +105,9 @@ export function generatePersonName() {
     "Levi", "Isaac", "Owen", "Henry", "Lincoln", "Leo", "Hunter", "Julian", "Hudson", "Asher",
     "Connor", "Eli", "Ezra", "Aaron", "Landon", "Adrian", "Jonathan", "Nolan", "Jeremiah", "Easton",
     "Elias", "Colton", "Cameron", "Carson", "Robert", "Angel", "Maverick", "Nicholas", "Dominic", "Jaxon",
-    "Greyson", "Adam", "Ian", "Austin", "Santiago", "Jordan", "Cooper", "Brayden", "Roman", "Evan"
+    "Greyson", "Adam", "Ian", "Austin", "Santiago", "Jordan", "Cooper", "Brayden", "Roman", "Evan",
+    "Chad", "Brad", "Tad", "Thad", "Chet", "Biff", "Skip", "Chip", "Kip", "Trip",
+    "Buck", "Hank", "Zeke", "Duke", "Rex", "Max", "Jax", "Dax", "Knox", "Fox"
   ];
 
   const femaleFirstNames = [
@@ -123,7 +125,8 @@ export function generatePersonName() {
     "Lily", "Aubrey", "Zoey", "Penelope", "Lillian", "Addison", "Layla", "Natalie", "Camila", "Hannah",
     "Brooklyn", "Zoe", "Nora", "Leah", "Savannah", "Audrey", "Claire", "Eleanor", "Skylar", "Ellie",
     "Samantha", "Stella", "Paisley", "Violet", "Mila", "Allison", "Alexa", "Anna", "Hazel", "Aaliyah",
-    "Ariana", "Lucy", "Caroline", "Sarah", "Genesis", "Kennedy", "Sadie", "Gabriella", "Madelyn", "Adeline"
+    "Ariana", "Lucy", "Caroline", "Sarah", "Genesis", "Kennedy", "Sadie", "Gabriella", "Madelyn", "Adeline",
+    "Muffy", "Buffy", "Mitzi", "Pixie", "Trixie", "Bambi", "Candy", "Brandy", "Misty", "Crystal"
   ];
 
   const lastNames = [
@@ -149,7 +152,9 @@ export function generatePersonName() {
     "Soto", "Weaver", "Ryan", "Gardner", "Payne", "Grant", "Dunn", "Kelley", "Spencer", "Hawkins",
     "Arnold", "Pierce", "Vazquez", "Hansen", "Peters", "Santos", "Hart", "Bradley", "Knight", "Elliott",
     "Cunningham", "Duncan", "Armstrong", "Hudson", "Carroll", "Lane", "Riley", "Andrews", "Alvarado", "Ray",
-    "Delgado", "Berry", "Perkins", "Hoffman", "Johnston", "Matthews", "Pena", "Richards", "Contreras", "Willis"
+    "Delgado", "Berry", "Perkins", "Hoffman", "Johnston", "Matthews", "Pena", "Richards", "Contreras", "Willis",
+    "McLovin", "O'Really", "Van Der Beek", "Von Trapp", "De La Soul", "Powers", "Danger", "Rockwell",
+    "Steele", "Wilde", "Savage", "Slaughter", "Justice", "Diamond", "Cash", "Stone", "Blaze", "Steel"
   ];
 
   // Randomly pick gender

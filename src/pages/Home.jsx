@@ -27,11 +27,6 @@ const Home = () => {
             <p>Traditional bottom-to-top scrolling credits</p>
           </Link>
         </div>
-
-        <div className="info-box">
-          <p>🎵 Add your MP3 files to <code>public/music/</code> directory</p>
-          <p>🎲 Randomly alternates between character and crew credits</p>
-        </div>
       </div>
     </div>
   );
