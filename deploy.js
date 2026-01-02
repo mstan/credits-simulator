@@ -1,4 +1,4 @@
-import { copyFileSync, mkdirSync, readdirSync, existsSync } from 'fs';
+import { copyFileSync, mkdirSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -23,7 +23,12 @@ if (existsSync(musicSrcDir)) {
     console.log(`Copied: ${file}`);
   });
 
-  console.log(`\n✓ Copied ${mp3Files.length} music file(s) to dist/music/`);
+  // Generate music.json manifest with relative paths
+  const musicPaths = mp3Files.map(file => `music/${file}`);
+  const manifestPath = join(__dirname, 'dist', 'music.json');
+  writeFileSync(manifestPath, JSON.stringify(musicPaths, null, 2));
+  console.log(`\n✓ Generated music.json manifest`);
+  console.log(`✓ Copied ${mp3Files.length} music file(s) to dist/music/`);
 } else {
   console.log('No music directory found - deploying without music');
 }

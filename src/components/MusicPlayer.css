@@ -24,6 +24,17 @@
   pointer-events: auto;
 }
 
-.music-player-zone:hover .music-player-button {
+/* Always show when paused */
+.music-player-zone.paused .music-player-button {
   opacity: 1;
+}
+
+/* Show on hover when playing */
+.music-player-zone.playing:hover .music-player-button {
+  opacity: 1;
+}
+
+/* Hide when playing and not hovering */
+.music-player-zone.playing .music-player-button {
+  opacity: 0;
 }

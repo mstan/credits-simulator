@@ -8,28 +8,30 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    // Automatically discover all MP3 files in the public/music directory
-    // Vite's import.meta.glob scans for files at build time
-    const musicFiles = import.meta.glob('/public/music/*.mp3', {
-      eager: true,
-      query: '?url',
-      import: 'default'
-    });
+    // Get the base URL from Vite (handles GitHub Pages base path)
+    const baseUrl = import.meta.env.BASE_URL;
 
-    // Convert the object keys to an array of URLs
-    const songs = Object.keys(musicFiles).map(path => {
-      // Convert /public/music/song.mp3 to /music/song.mp3
-      return path.replace('/public', '');
-    });
-
-    if (songs.length > 0) {
-      // Shuffle the playlist
-      const shuffled = [...songs].sort(() => Math.random() - 0.5);
-      setPlaylist(shuffled);
-      console.log(`Found ${songs.length} music file(s):`, songs);
-    } else {
-      console.log('No music files found in public/music/');
-    }
+    // Fetch the music manifest
+    fetch(`${baseUrl}music.json`)
+      .then(response => {
+        if (!response.ok) throw new Error('No music manifest found');
+        return response.json();
+      })
+      .then(songs => {
+        if (songs.length > 0) {
+          // Prepend base URL to each song path
+          const songsWithBase = songs.map(song => `${baseUrl}${song}`);
+          // Shuffle the playlist
+          const shuffled = [...songsWithBase].sort(() => Math.random() - 0.5);
+          setPlaylist(shuffled);
+          console.log(`Found ${songs.length} music file(s)`);
+        } else {
+          console.log('No music files in manifest');
+        }
+      })
+      .catch(err => {
+        console.log('No music available:', err.message);
+      });
   }, []);
 
   useEffect(() => {
@@ -77,7 +79,7 @@ const MusicPlayer = () => {
         onEnded={handleEnded}
         style={{ display: 'none' }}
       />
-      <div className="music-player-zone">
+      <div className={`music-player-zone ${isPlaying ? 'playing' : 'paused'}`}>
         <button className="music-player-button" onClick={togglePlay}>
           {isPlaying ? '⏸ Pause' : '▶ Play'}
         </button>
