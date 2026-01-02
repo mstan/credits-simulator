@@ -115,4 +115,16 @@ The built files will be in the `dist/` directory.
 
 Your site will be live at: `https://YOUR_USERNAME.github.io/credits-simulator-webpage/`
 
-**Note:** Music files are ignored by git (added to `.gitignore`), so they won't be deployed. The music player will simply not show any controls if no music files are detected.
+### How Music Deployment Works
+
+Music files in `public/music/` are:
+- **Ignored by git** (via `.gitignore`) - they won't appear in your public repository
+- **Automatically included in deployment** - the `predeploy` script copies them to `dist/music/` before deploying
+- **Available on the deployed site** - they'll play on GitHub Pages but aren't browseable in the repo
+
+This means:
+- ✅ Your music plays on the live site
+- ✅ Music files are NOT in your public source code repository
+- ✅ People can still download them if they really want (via browser dev tools), but they won't be easily accessible
+
+**Note:** If you don't have any music files, the deployment will work fine without them.
