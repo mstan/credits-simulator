@@ -10,27 +10,33 @@ const MusicPlayer = () => {
   useEffect(() => {
     // Get the base URL from Vite (handles GitHub Pages base path)
     const baseUrl = import.meta.env.BASE_URL;
+    const manifestUrl = `${baseUrl}music.json`;
+
+    console.log(`Attempting to load music from: ${manifestUrl}`);
 
     // Fetch the music manifest
-    fetch(`${baseUrl}music.json`)
+    fetch(manifestUrl)
       .then(response => {
+        console.log(`Music manifest response status: ${response.status}`);
         if (!response.ok) throw new Error('No music manifest found');
         return response.json();
       })
       .then(songs => {
+        console.log('Music manifest loaded:', songs);
         if (songs.length > 0) {
           // Prepend base URL to each song path
           const songsWithBase = songs.map(song => `${baseUrl}${song}`);
           // Shuffle the playlist
           const shuffled = [...songsWithBase].sort(() => Math.random() - 0.5);
           setPlaylist(shuffled);
-          console.log(`Found ${songs.length} music file(s)`);
+          console.log(`Found ${songs.length} music file(s):`, shuffled);
         } else {
           console.log('No music files in manifest');
         }
       })
       .catch(err => {
-        console.log('No music available:', err.message);
+        console.error('Music loading failed:', err.message);
+        console.error('Attempted URL:', manifestUrl);
       });
   }, []);
 

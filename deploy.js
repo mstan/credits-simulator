@@ -4,6 +4,11 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Create .nojekyll file to prevent GitHub Pages from using Jekyll
+const nojekyllPath = join(__dirname, 'dist', '.nojekyll');
+writeFileSync(nojekyllPath, '');
+console.log('✓ Created .nojekyll file for GitHub Pages');
+
 // Copy music files to dist after build
 const musicSrcDir = join(__dirname, 'public', 'music');
 const musicDestDir = join(__dirname, 'dist', 'music');
